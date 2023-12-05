@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bash
+
+if [[ ! -d /config/scripts/ ]]; then
+    mkdir -p /config/scripts/
+fi
+
+if [[ ! -f /config/scripts/wg0.preup.sh ]]; then
+    cp /defaults/wg0.preup.sh /config/scripts/wg0.preup.sh
+fi
+
+if [[ ! -f /config/scripts/wg0.postdown.sh ]]; then
+    cp /defaults/wg0.postdown.sh /config/scripts/wg0.postdown.sh
+fi
+
+chmod a+x /config/scripts/*.sh

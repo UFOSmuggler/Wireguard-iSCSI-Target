@@ -1,0 +1,20 @@
+#!/usr/bin/with-contenv bash
+
+if [[ ! -f /etc/target/saveconfig.json ]]; then
+        echo "/etc/target/saveconfig.json not found..."
+        echo "Configuring iSCSI target..."
+	targetcli /backstores/block create block0 /dev/iscsi-target
+	targetcli /iscsi set discovery_auth userid=$TCLI_USER
+	targetcli /iscsi set discovery_auth password=$TCLI_PASS >/dev/null
+	targetcli /iscsi set discovery_auth enable=1
+	targetcli /iscsi create wwn=$TCLI_TARGET_WWN
+	targetcli /iscsi/$TCLI_TARGET_WWN/tpg1/ set attribute authentication=1
+	targetcli /iscsi/$TCLI_TARGET_WWN/tpg1/luns/ create lun=0 storage_object=/backstores/block/block0
+	targetcli /iscsi/$TCLI_TARGET_WWN/tpg1/acls/ create wwn=$TCLI_INITIATOR_WWN
+	targetcli /iscsi/$TCLI_TARGET_WWN/tpg1/acls/$TCLI_INITIATOR_WWN set auth userid=$TCLI_USER
+	targetcli /iscsi/$TCLI_TARGET_WWN/tpg1/acls/$TCLI_INITIATOR_WWN set auth password=$TCLI_PASS >/dev/null
+	targetcli saveconfig
+        echo "iSCSI target configured."
+else
+        echo "Using /etc/target/saveconfig.json for iSCSI target configuration."
+fi
