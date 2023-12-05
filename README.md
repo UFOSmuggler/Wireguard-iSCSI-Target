@@ -59,8 +59,8 @@ services:
       # If there is no existing config in /etc/target/ these are not optional
       - TCLI_USER=my-username #Initiator username
       - TCLI_PASS=my-password #Initiator password
-      - TCLI_TARGET_WWN=2023-12.com.example:storage:my-lv #Target's WWN
-      - TCLI_INITIATOR_WWN=2023-12.com.example:initiator1 #Initiator's WWN
+      - TCLI_TARGET_WWN=iqn.2023-12.com.example:storage:my-lv #Target's WWN
+      - TCLI_INITIATOR_WWN=iqn.2023-12.com.example:initiator1 #Initiator's WWN
     ports:
       - 51820:51820/udp
 
