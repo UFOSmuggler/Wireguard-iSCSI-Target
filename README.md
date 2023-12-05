@@ -3,7 +3,7 @@ Expose an iSCSI target via Wireguard from docker
 
 ## Go [here](https://github.com/linuxserver/docker-wireguard) for Wireguard questions
 This Dockerfile is built on top of https://github.com/linuxserver/docker-wireguard and mostly only adds iSCSI stuff.
-The only Wireguard stuff this repo is responsible for is the server template and scripts found in the root/default dir.
+The only Wireguard stuff this repo is responsible for is the server template and scripts found in the root/defaults dir.
 
 ## Use case
 This creates a Docker image/container that creates a Wireguard network with a single peer (called initiator), and exposes iSCSI target portals via wireguard.  This network only allows 3260/TCP traffic in.  Environment variables provide a default configuration for an iSCSI target, and a [targetcli](https://github.com/open-iscsi/targetcli-fb) config will be created should there not be one already.
