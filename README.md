@@ -53,7 +53,7 @@ services:
       - SERVERURL=iscsi.example.com #Wireguard server DNS name or IP for initiator to use
       - SERVERPORT=51820
       - INTERNAL_SUBNET=172.16.222.0
-      - ALLOWEDIPS=172.16.222.1/32
+      - ALLOWEDIPS=172.16.222.2/32
       # ISCSI target config - for WWNs, I suggest an IQN - https://en.wikipedia.org/wiki/ISCSI#Addressing
       # Also see targetcli documentation - https://github.com/open-iscsi/targetcli-fb
       # If there is no existing config in /etc/target/ these are not optional
