@@ -8,6 +8,7 @@ if [[ ! -f /etc/target/saveconfig.json ]]; then
 	targetcli /iscsi set discovery_auth password=$TCLI_PASS >/dev/null
 	targetcli /iscsi set discovery_auth enable=1
 	targetcli /iscsi create wwn=$TCLI_TARGET_WWN
+	targetcli /iscsi/$TCLI_TARGET_WWN/tpg1/ set parameter MaxConnections=$TCLI_MAX_CONNECTIONS
 	targetcli /iscsi/$TCLI_TARGET_WWN/tpg1/ set attribute authentication=1
 	targetcli /iscsi/$TCLI_TARGET_WWN/tpg1/luns/ create lun=0 storage_object=/backstores/block/block0
 	targetcli /iscsi/$TCLI_TARGET_WWN/tpg1/acls/ create wwn=$TCLI_INITIATOR_WWN

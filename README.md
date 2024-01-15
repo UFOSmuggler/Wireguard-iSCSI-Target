@@ -61,6 +61,7 @@ services:
       - TCLI_PASS=my-password #Initiator password
       - TCLI_TARGET_WWN=iqn.2023-12.com.example:storage:my-lv #Target's WWN
       - TCLI_INITIATOR_WWN=iqn.2023-12.com.example:initiator1 #Initiator's WWN
+      - TCLI_MAX_CONNECTIONS=1
     ports:
       - 51820:51820/udp
 
